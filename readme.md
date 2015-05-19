@@ -87,6 +87,7 @@ class Theme extends \Oakwood\AbstractTheme {
 	}
 
 }
+```
 
 
 ## Admin
@@ -114,6 +115,7 @@ class Admin extends \Oakwood\AbstractAdmin {
 	}
 
 }
+```
 
 
 ## Cron
