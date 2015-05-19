@@ -1,0 +1,40 @@
+{
+	"name": "owc/wp-theme",
+	"version": "0.0.1",
+	"description": "A starter lib for wordpress themes",
+	"authors": [
+		{
+			"name": "antoniozzo",
+			"email": "antonio.rizzo@oakwood.se",
+			"homepage": "http://oakwood.se",
+			"role": "Developer"
+		},
+		{
+			"name": "maeertin",
+			"email": "martin.barri@oakwood.se",
+			"homepage": "http://oakwood.se",
+			"role": "Developer"
+		}
+	],
+	"packages": [
+		{
+			"name": "elliotcondon/acf",
+			"version": "5.2.5",
+			"type": "wordpress-plugin",
+			"dist": {
+				"url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=b3JkZXJfaWQ9NDI2MTN8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE0LTEwLTIyIDA5OjEwOjA2",
+				"type": "zip"
+			}
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"composer/installers": "~1.0",
+		"elliotcondon/acf": "~5.2"
+	},
+	"autoload": {
+		"psr-0": {
+			"OWC": "src/"
+		}
+	}
+}
