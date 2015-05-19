@@ -16,14 +16,17 @@
 			"role": "Developer"
 		}
 	],
-	"packages": [
+	"repositories": [
 		{
-			"name": "elliotcondon/acf",
-			"version": "5.2.5",
-			"type": "wordpress-plugin",
-			"dist": {
-				"url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=b3JkZXJfaWQ9NDI2MTN8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE0LTEwLTIyIDA5OjEwOjA2",
-				"type": "zip"
+			"type": "package",
+			"package": {
+				"name": "advanced-custom-fields/advanced-custom-fields-pro",
+				"version": "5.2",
+				"type": "wordpress-plugin",
+				"dist": {
+					"type": "zip",
+					"url": "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=b3JkZXJfaWQ9NDI2MTN8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE0LTEwLTIyIDA5OjEwOjA2"
+				}
 			}
 		}
 	],
