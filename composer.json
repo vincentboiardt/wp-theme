@@ -33,7 +33,7 @@
 	"require": {
 		"php": ">=5.4.0",
 		"composer/installers": "~1.0",
-		"advanced-custom-fields/advanced-custom-fields-pro": "~5.2"
+		"advanced-custom-fields/advanced-custom-fields-pro": "5.2"
 	},
 	"autoload": {
 		"psr-0": {
