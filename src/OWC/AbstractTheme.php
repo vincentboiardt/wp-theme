@@ -1,5 +1,5 @@
 <?php
-namespace OWC;
+namespace Oakwood;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -211,7 +211,7 @@ abstract class AbstractTheme {
 			if ( ! $active )
 				unregister_widget( $widget );
 			else
-				register_widget( 'OWC\\Widgets\\' . $widget );
+				register_widget( 'Oakwood\\Widgets\\' . $widget );
 		}
 	}
 
