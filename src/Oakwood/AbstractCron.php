@@ -4,14 +4,38 @@ namespace Oakwood;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 abstract class AbstractCron {
+
+	use Trait\Hooks {
+		Trait\Hooks::__construct as __hooks_construct;
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| SETTINGS
+	|--------------------------------------------------------------------------
+	*/
+
+	public $filters = array(
+		'cron_schedules' => 'cron_schedules'
+	);
+
+	public $actions = array(
+		'owc_clear_transients' => 'clear_transients'
+	);
+
 	public function __construct() {
-		add_filter( 'cron_schedules', array( $this, 'cron_schedules' ) );
+		$this->__hooks_construct();
 		
 		if ( ! wp_next_scheduled( 'owc_clear_transients' ) ) {
 			wp_schedule_event( time(), 'daily', 'owc_clear_transients' );
 		}
-		add_action( 'owc_clear_transients', array( $this, 'clear_transients' ) );
 	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| FILTERS
+	|--------------------------------------------------------------------------
+	*/
 
 	public function cron_schedules( $schedules ) {
 		$schedules['15min'] = array(
@@ -21,6 +45,12 @@ abstract class AbstractCron {
 
 		return $schedules;
 	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| ACTIONS
+	|--------------------------------------------------------------------------
+	*/
 
 	public function clear_transients() {
 		global $wpdb;
@@ -36,4 +66,5 @@ abstract class AbstractCron {
 			get_transient( $transient_name );
 		}
 	}
+
 }

@@ -5,6 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 abstract class AbstractTheme {
 
+	use Trait\Hooks {
+		Trait\Hooks::__construct as __hooks_construct;
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| SETTINGS
@@ -25,7 +29,7 @@ abstract class AbstractTheme {
 			'function'  => 'embed_oembed_html'
 			'priority'  => 99
 			'arguments' => 3
-		),
+		)
 	);
 
 	public $actions = array(
@@ -34,7 +38,7 @@ abstract class AbstractTheme {
 		'after_setup_theme'  => 'after_setup_theme',
 		'wp_enqueue_scripts' => 'enqueue_assets',
 		'after_setup_theme'  => 'register_menus',
-		'widgets_init'       => 'register_sidebars',
+		'init'               => 'register_sidebars',
 		'widgets_init'       => 'register_widgets'
 	);
 
@@ -70,21 +74,7 @@ abstract class AbstractTheme {
 	*/
 
 	public function __construct() {
-		foreach ( $this->get_filters( $this->filters ) as $hook => $funcOrOpts ) {
-			if ( is_string( $funcOrOpts ) ) {
-				add_filter( $hook, array( $this, $funcOrOpts ) );
-			} else {
-				add_filter( $hook, array( $this, $funcOrOpts['function'] ), $funcOrOpts['priority'], $funcOrOpts['arguments'] );
-			}
-		}
-
-		foreach ( $this->get_actions( $this->actions ) as $hook => $funcOrOpts ) {
-			if ( is_string( $funcOrOpts ) ) {
-				add_action( $hook, array( $this, $funcOrOpts ) );
-			} else {
-				add_action( $hook, array( $this, $funcOrOpts['function'] ), $funcOrOpts['priority'], $funcOrOpts['arguments'] );
-			}
-		}
+		$this->__hooks_construct();
 	}
 
 	/*
@@ -217,17 +207,19 @@ abstract class AbstractTheme {
 
 	/*
 	|--------------------------------------------------------------------------
-	| GETTERS
+	| CUSTOM ACTIONS
 	|--------------------------------------------------------------------------
 	*/
 
-	public function get_filters( $filters = array() ) {
-		return $filters;
+	public function body_prepend() {
+		do_action( 'body_prepend' );
 	}
 
-	public function get_actions( $actions = array() ) {
-		return $actions;
-	}
+	/*
+	|--------------------------------------------------------------------------
+	| GETTERS
+	|--------------------------------------------------------------------------
+	*/
 
 	public function get_widgets( $widgets = array() ) {
 		return $widgets;
@@ -239,6 +231,16 @@ abstract class AbstractTheme {
 
 	public function get_scripts( $scripts = array() ) {
 		return $scripts;
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| STATIC
+	|--------------------------------------------------------------------------
+	*/
+
+	public static function version() {
+		return wp_get_theme()->get( 'Version' );
 	}
 
 }

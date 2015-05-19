@@ -2,6 +2,7 @@
 	"name": "owc/wp-theme",
 	"version": "0.0.1",
 	"description": "A starter lib for wordpress themes",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "antoniozzo",
