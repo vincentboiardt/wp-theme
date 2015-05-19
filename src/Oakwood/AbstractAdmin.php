@@ -16,18 +16,18 @@ abstract class AbstractAdmin {
 	*/
 
 	public $filters = array(
-		'tiny_mce_before_init' => 'tiny_mce_before_init',
-		'mce_buttons'          => 'mce_buttons'
+		'tiny_mce_before_init',
+		'mce_buttons'
 	);
 
 	public $actions = array(
-		'init'       => 'add_pages',
-		'admin_init' => 'prevent_admin',
-		'admin_menu' => 'dashboard'
+		'add_pages'     => 'init',
+		'prevent_admin' => 'admin_init',
+		'dashboard'     => 'admin_menu'
 	);
 
 	public $pages = array(
-			array(
+		array(
 			'page_title' => 'Theme Settings',
 			'menu_title' => 'Theme',
 			'menu_slug'  => 'theme-settings',

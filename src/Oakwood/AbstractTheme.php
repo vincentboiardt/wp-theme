@@ -16,30 +16,30 @@ abstract class AbstractTheme {
 	*/
 
 	public $filters = array(
-		'wp_nav_menu_objects' => 'wp_nav_menu_objects',
-		'excerpt_more'        => 'excerpt_more',
+		'wp_nav_menu_objects',
+		
+		'excerpt_more' => 'excerpt_more',
 
 		'the_content_more_link' => array(
-			'function'  => 'the_content_more_link'
 			'priority'  => 10
 			'arguments' => 2
 		),
 
 		'embed_oembed_html' => array(
-			'function'  => 'embed_oembed_html'
+			'hook'      => 'embed_oembed_html'
 			'priority'  => 99
 			'arguments' => 3
 		)
 	);
 
 	public $actions = array(
-		'wp'                 => 'remove_header_tags',
-		'wp_head'            => 'open_graph',
+		'remove_header_tags' => 'wp',
+		'open_graph'         => 'wp_head',
 		'after_setup_theme'  => 'after_setup_theme',
-		'wp_enqueue_scripts' => 'enqueue_assets',
-		'after_setup_theme'  => 'register_menus',
-		'init'               => 'register_sidebars',
-		'widgets_init'       => 'register_widgets'
+		'enqueue_assets'     => 'wp_enqueue_scripts',
+		'register_menus'     => 'after_setup_theme',
+		'register_sidebars'  => 'widgets_init',
+		'register_widgets'   => 'widgets_init'
 	);
 
 	public $widgets = array(

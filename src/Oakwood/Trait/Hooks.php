@@ -9,19 +9,25 @@ trait Hooks {
 	public $actions = array();
 
 	public function __construct() {
-		foreach ( $this->get_filters( $this->filters ) as $hook => $funcOrOpts ) {
-			if ( is_string( $funcOrOpts ) ) {
-				add_filter( $hook, array( $this, $funcOrOpts ) );
-			} else {
-				add_filter( $hook, array( $this, $funcOrOpts['function'] ), $funcOrOpts['priority'], $funcOrOpts['arguments'] );
-			}
-		}
+		$this->init_hooks( 'filter' );
+		$this->init_hooks( 'action' );
+	}
 
-		foreach ( $this->get_actions( $this->actions ) as $hook => $funcOrOpts ) {
-			if ( is_string( $funcOrOpts ) ) {
-				add_action( $hook, array( $this, $funcOrOpts ) );
+	private function init_hooks( $type = 'action' ) {
+		$property = $type . 's';
+		$getter   = 'get_' . $property;
+		$setter   = 'add_' . $type;
+
+		foreach ( $this->{$getter}( $this->{$property} ) as $key => $value ) {
+			if ( is_string( $key ) ) {
+				if ( is_string( $value ) ) {
+					$setter( $value, array( $this, $key ) );
+				}
+				if ( is_array( $value ) ) {
+					$setter( isset( $value['hook'] ) ? $value['hook'] : $key, array( $this, $key ), $value['priority'], $value['arguments'] );
+				}
 			} else {
-				add_action( $hook, array( $this, $funcOrOpts['function'] ), $funcOrOpts['priority'], $funcOrOpts['arguments'] );
+				$setter( $value, array( $this, $value ) );
 			}
 		}
 	}
