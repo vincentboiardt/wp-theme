@@ -15,12 +15,12 @@ abstract class AbstractAdmin {
 	|--------------------------------------------------------------------------
 	*/
 
-	public $filters = array(
+	protected $filters = array(
 		'tiny_mce_before_init',
 		'mce_buttons'
 	);
 
-	public $actions = array(
+	protected $actions = array(
 		'add_pages'     => 'init',
 		'prevent_admin' => 'admin_init',
 		'dashboard'     => 'admin_menu'

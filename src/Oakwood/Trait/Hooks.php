@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 trait Hooks {
 
-	public $filters = array();
-	public $actions = array();
+	protected $filters = array();
+	protected $actions = array();
 
 	public function __construct() {
 		$this->init_hooks( 'filter' );

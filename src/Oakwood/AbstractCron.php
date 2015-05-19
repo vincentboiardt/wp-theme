@@ -15,11 +15,11 @@ abstract class AbstractCron {
 	|--------------------------------------------------------------------------
 	*/
 
-	public $filters = array(
+	protected $filters = array(
 		'cron_schedules'
 	);
 
-	public $actions = array(
+	protected $actions = array(
 		'clear_transients' => 'owc_clear_transients'
 	);
 

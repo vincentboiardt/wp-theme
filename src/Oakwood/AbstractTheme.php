@@ -15,7 +15,7 @@ abstract class AbstractTheme {
 	|--------------------------------------------------------------------------
 	*/
 
-	public $filters = array(
+	protected $filters = array(
 		'wp_nav_menu_objects',
 		
 		'excerpt_more' => 'excerpt_more',
@@ -32,7 +32,7 @@ abstract class AbstractTheme {
 		)
 	);
 
-	public $actions = array(
+	protected $actions = array(
 		'remove_header_tags' => 'wp',
 		'open_graph'         => 'wp_head',
 		'after_setup_theme'  => 'after_setup_theme',
