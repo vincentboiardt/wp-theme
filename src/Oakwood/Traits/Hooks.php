@@ -1,7 +1,16 @@
 <?php
+
 namespace Oakwood\Traits;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+/*
+|--------------------------------------------------------------------------
+| TRAIT Hooks
+|--------------------------------------------------------------------------
+|
+| This is a trait for managing hooks in wordpress.
+| Can be used in any class for handling filters & actions easy.
+|
+*/
 
 trait Hooks {
 

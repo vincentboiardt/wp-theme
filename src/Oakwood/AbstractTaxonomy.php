@@ -1,7 +1,18 @@
 <?php
+
 namespace Oakwood;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+/*
+|--------------------------------------------------------------------------
+| CLASS AbstractTaxonomy
+|--------------------------------------------------------------------------
+|
+| Extend this class in you theme to create a custom taxonomy.
+|
+| See https://codex.wordpress.org/Function_Reference/register_taxonomy
+| for availible properties.
+|
+*/
 
 abstract class AbstractTaxonomy {
 
@@ -21,6 +32,8 @@ abstract class AbstractTaxonomy {
 
 	protected $post_types = array();
 
+	public $public = true;
+
 	/*
 	|--------------------------------------------------------------------------
 	| CONSTRUCT
@@ -30,7 +43,8 @@ abstract class AbstractTaxonomy {
 	public function __construct( $type = null, $properties = array() ) {
 		$this->__hooks_construct();
 		
-		$this->type = $type;
+		if ( $type )
+			$this->type = $type;
 
 		foreach ( $properties as $key => $value ) {
 			$this->{$key} = $value;

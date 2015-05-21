@@ -1,7 +1,15 @@
 <?php
+
 namespace Oakwood;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+/*
+|--------------------------------------------------------------------------
+| CLASS AbstractAdmin
+|--------------------------------------------------------------------------
+|
+| Extend this class in you theme to create your core theme admin class
+|
+*/
 
 abstract class AbstractAdmin {
 

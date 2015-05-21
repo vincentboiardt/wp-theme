@@ -1,7 +1,18 @@
 <?php
+
 namespace Oakwood;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+/*
+|--------------------------------------------------------------------------
+| CLASS AbstractPostType
+|--------------------------------------------------------------------------
+|
+| Extend this class in you theme to create a custom post type.
+|
+| See https://codex.wordpress.org/Function_Reference/register_post_type
+| for availible properties.
+|
+*/
 
 abstract class AbstractPostType {
 
@@ -19,6 +30,8 @@ abstract class AbstractPostType {
 
 	protected $type = '';
 
+	public $public = true;
+
 	/*
 	|--------------------------------------------------------------------------
 	| CONSTRUCT
@@ -28,7 +41,8 @@ abstract class AbstractPostType {
 	public function __construct( $type = null, $properties = array() ) {
 		$this->__hooks_construct();
 
-		$this->type = $type;
+		if ( $type )
+			$this->type = $type;
 
 		foreach ( $properties as $key => $value ) {
 			$this->{$key} = $value;

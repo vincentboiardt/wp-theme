@@ -1,7 +1,12 @@
 <?php
+
 namespace Oakwood;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+/*
+|--------------------------------------------------------------------------
+| CLASS AbstractCron
+|--------------------------------------------------------------------------
+*/
 
 abstract class AbstractCron {
 

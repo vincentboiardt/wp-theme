@@ -1,7 +1,15 @@
 <?php
+
 namespace Oakwood;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+/*
+|--------------------------------------------------------------------------
+| CLASS AbstractTheme
+|--------------------------------------------------------------------------
+|
+| Extend this class in you theme to create your core theme class
+|
+*/
 
 abstract class AbstractTheme {
 
@@ -54,18 +62,8 @@ abstract class AbstractTheme {
 		'WP_Widget_Tag_Cloud'       => false
 	);
 
-	public $scripts = array(
-		'main-js' => array(
-			get_stylesheet_directory_uri() . '/assets/dist/' . owc_asset_rev( 'js/main.js' ),
-			array( 'jquery' ),
-			false,
-			true
-		)
-	);
-
-	public $styles = array(
-		'main-css' => get_stylesheet_directory_uri() . '/assets/dist/' . owc_asset_rev( 'css/main.css' )
-	);
+	public $scripts = array();
+	public $styles  = array();
 
 	/*
 	|--------------------------------------------------------------------------
