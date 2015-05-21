@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 abstract class AbstractAdmin {
 
-	use Trait\Hooks {
-		Trait\Hooks::__construct as __hooks_construct;
+	use Traits\Hooks {
+		Traits\Hooks::__construct as __hooks_construct;
 	}
 
 	/*

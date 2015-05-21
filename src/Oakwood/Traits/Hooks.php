@@ -1,12 +1,9 @@
 <?php
-namespace Oakwood\Trait;
+namespace Oakwood\Traits;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 trait Hooks {
-
-	protected $filters = array();
-	protected $actions = array();
 
 	public function __construct() {
 		$this->init_hooks( 'filter' );
@@ -17,6 +14,9 @@ trait Hooks {
 		$property = $type . 's';
 		$getter   = 'get_' . $property;
 		$setter   = 'add_' . $type;
+
+		if (!isset($this->{$property}))
+			return;
 
 		foreach ( $this->{$getter}( $this->{$property} ) as $key => $value ) {
 			if ( is_string( $key ) ) {

@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 abstract class AbstractTaxonomy {
 
-	use Trait\Hooks {
-		Trait\Hooks::__construct as __hooks_construct;
+	use Traits\Hooks {
+		Traits\Hooks::__construct as __hooks_construct;
 	}
 
 	/*
@@ -27,7 +27,7 @@ abstract class AbstractTaxonomy {
 	|--------------------------------------------------------------------------
 	*/
 
-	public function __construct( $type, $properties ) {
+	public function __construct( $type = null, $properties = array() ) {
 		$this->__hooks_construct();
 		
 		$this->type = $type;

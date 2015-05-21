@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 abstract class AbstractTheme {
 
-	use Trait\Hooks {
-		Trait\Hooks::__construct as __hooks_construct;
+	use Traits\Hooks {
+		Traits\Hooks::__construct as __hooks_construct;
 	}
 
 	/*
@@ -21,13 +21,13 @@ abstract class AbstractTheme {
 		'excerpt_more' => 'excerpt_more',
 
 		'the_content_more_link' => array(
-			'priority'  => 10
+			'priority'  => 10,
 			'arguments' => 2
 		),
 
 		'embed_oembed_html' => array(
-			'hook'      => 'embed_oembed_html'
-			'priority'  => 99
+			'hook'      => 'embed_oembed_html',
+			'priority'  => 99,
 			'arguments' => 3
 		)
 	);
