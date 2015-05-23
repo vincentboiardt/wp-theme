@@ -64,6 +64,8 @@ abstract class AbstractAdmin {
 		$settings['style_formats']           = '[
 			{title: "Preamble", inline: "span", classes: "preamble"}
 		]';
+
+		return $settings;
 	}
 
 	public function mce_buttons( $settings ) {
