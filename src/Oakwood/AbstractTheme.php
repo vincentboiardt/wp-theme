@@ -209,7 +209,7 @@ abstract class AbstractTheme {
 	|--------------------------------------------------------------------------
 	*/
 
-	public function body_prepend() {
+	public static function body_prepend() {
 		do_action( 'body_prepend' );
 	}
 
