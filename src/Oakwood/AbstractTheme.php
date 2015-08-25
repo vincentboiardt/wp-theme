@@ -104,8 +104,11 @@ abstract class AbstractTheme {
 	}
 
 	// Wraps videos with responsive video class
-	public function embed_oembed_html() {
-		return '<div class="video-crop">' . $html . '</div>';
+	public function embed_oembed_html( $html ) {
+		$html = preg_replace( '/(youtube\.com.*)(\?feature=oembed)(.*)/', '$1?' . apply_filters( "youtube_extra_params", "wmode=transparent&amp;" ) . 'rel=0$3', $html );
+		$html = '<div class="videoCrop">' . $html . '</div>';
+
+		return $html;
 	}
 
 	/*
